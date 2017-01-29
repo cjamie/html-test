@@ -1,0 +1,68 @@
+<!-- Theme Name: Simple Parallax Website
+Description: carousel of emb videos made from scratch
+Author: Jamie Chu
+Author URI: github.com/cjamie
+-->
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<body>
+	<script src="newJS2.js"></script>
+
+	<div class="slideshow-container">
+		<div class='sVideo'><iframe src="https://www.youtube.com/embed/N3I7qCpdndw" frameborder="0" allowfullscreen></iframe></div>
+		<div class='sVideo'><iframe src="https://www.youtube.com/embed/eGD8VV_ONpo" frameborder="0" allowfullscreen></iframe></div>
+		<div class='sVideo'><iframe src="https://www.youtube.com/embed/ZY7N8lBtqvw" frameborder="0" allowfullscreen></iframe></div>
+
+
+	<!-- icons that will call updateVideo function -->
+		<a class="prev" onclick="updateVideo(-1)">❮</a>
+		<a class="next" onclick="updateVideo(1)">❯</a>
+
+	</div>
+	<br>
+
+
+	<!-- set of 3 dots at the bottom that, when clicked, will display the current slide-->
+<!-- 	<div style="text-align:center">
+		<span class="dot" onclick="currentSlide(1)"></span> 
+		<span class="dot" onclick="currentSlide(2)"></span> 
+		<span class="dot" onclick="currentSlide(3)"></span> 
+	</div> -->
+
+	<script>
+		//global variable index used to keep track of video counter
+		var vidIndex=1;
+
+		//initial video 
+		showVideo(vidIndex);
+
+		//increments or decrements i-ndex, and will call showVideo module
+		function updateVideo(n){
+			showVideo(vidIndex += n);
+		}
+
+		//takes in an index parameter and will display appropriate dot and video
+		function showVideo(n){
+			var i;
+			var videoClass=document.getElementsByClassName('sVideo');
+
+			if (n > videoClass.length) 
+				{vidIndex = 1}    
+			if (n < 1) 
+				vidIndex = videoClass.length;
+
+			//must reset state of all iframes to display none and only show 1 of them
+			for (i = 0; i < videoClass.length; i++) {
+				videoClass[i].style.display = "none";  
+			}
+
+			console.log(vidIndex);
+			videoClass[vidIndex-1].style.display="block";
+		}
+	</script>
+
+</body>
+</html> 

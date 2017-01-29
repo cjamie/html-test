@@ -1,0 +1,36 @@
+* {box-sizing:border-box}
+
+body {
+  font-family: Verdana,sans-serif;
+  margin:0;
+  position:relative;
+}
+
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+overflow:hidden;
+  border:2px green solid;
+  height:500px;
+}
+
+
+.sVideo{
+  position:static;
+  display:none; /*default display style is hidden unless changed via javascript*/
+  border:3px red solid;
+}
+
+.prev, .next{
+  cursor:pointer;
+top:50%;
+  font-size:20px;
+  position:absolute;
+}
+.prev{
+  left:0;
+}
+.next{
+  right:0;
+}
