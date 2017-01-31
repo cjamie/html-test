@@ -2,7 +2,7 @@
 // Description: Here, you can maintain a list of js functions to be changed
 // Author: Jamie Chu
 // Author URI: github.com/cjamie
-// Tags: Parallax, Website 
+// Tags: Website 
 
 
 // var slideIndex = 1;

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!-- Theme Name: Simple Parallax Website
 Description: carousel of emb videos made from scratch
 Author: Jamie Chu
@@ -6,15 +7,16 @@ Author URI: github.com/cjamie
 
 <html>
 <head>
+<title></title>
 	<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
 	<script src="newJS2.js"></script>
 
 	<div class="slideshow-container">
-		<div class='sVideo'><iframe src="https://www.youtube.com/embed/N3I7qCpdndw" frameborder="0" allowfullscreen></iframe></div>
-		<div class='sVideo'><iframe src="https://www.youtube.com/embed/eGD8VV_ONpo" frameborder="0" allowfullscreen></iframe></div>
-		<div class='sVideo'><iframe src="https://www.youtube.com/embed/ZY7N8lBtqvw" frameborder="0" allowfullscreen></iframe></div>
+		<div class='sVideo fade'><iframe src="https://www.youtube.com/embed/N3I7qCpdndw" frameborder="0" allowfullscreen></iframe></div>
+		<div class='sVideo fade'><iframe src="https://www.youtube.com/embed/eGD8VV_ONpo" frameborder="0" allowfullscreen></iframe></div>
+		<div class='sVideo fade'><iframe src="https://www.youtube.com/embed/ZY7N8lBtqvw" frameborder="0" allowfullscreen></iframe></div>
 
 
 	<!-- icons that will call updateVideo function -->
@@ -25,12 +27,12 @@ Author URI: github.com/cjamie
 	<br>
 
 
-	<!-- set of 3 dots at the bottom that, when clicked, will display the current slide-->
-<!-- 	<div style="text-align:center">
-		<span class="dot" onclick="currentSlide(1)"></span> 
-		<span class="dot" onclick="currentSlide(2)"></span> 
-		<span class="dot" onclick="currentSlide(3)"></span> 
-	</div> -->
+	<!-- set of  dots on the bottom that spacially defines which video is displayed-->
+	<div style="text-align:center">
+		<span class="dot" onclick="currentVideo(1)"></span> 
+		<span class="dot" onclick="currentVideo(2)"></span> 
+		<span class="dot" onclick="currentVideo(3)"></span> 
+	</div>
 
 	<script>
 		//global variable index used to keep track of video counter
@@ -43,11 +45,20 @@ Author URI: github.com/cjamie
 		function updateVideo(n){
 			showVideo(vidIndex += n);
 		}
+		function currentVideo(n){
+			showVideo(vidIndex = n);
+		}
+
 
 		//takes in an index parameter and will display appropriate dot and video
+
+		//updates the shaded dot
+
 		function showVideo(n){
 			var i;
 			var videoClass=document.getElementsByClassName('sVideo');
+			var dotClass=document.getElementsByClassName('dot');
+
 
 			if (n > videoClass.length) 
 				{vidIndex = 1}    
@@ -58,9 +69,17 @@ Author URI: github.com/cjamie
 			for (i = 0; i < videoClass.length; i++) {
 				videoClass[i].style.display = "none";  
 			}
+			// must reset all dot stats to regular background color via classname
+			for(i=0; i<dotClass.length; i++){
+				dotClass[i].className = dotClass[i].className.replace(" active", "");
+			}
+
 
 			console.log(vidIndex);
 			videoClass[vidIndex-1].style.display="block";
+			//to shade the particular dot, you add the classname to active
+			dotClass[vidIndex-1].classname += " active";
+
 		}
 	</script>
 
